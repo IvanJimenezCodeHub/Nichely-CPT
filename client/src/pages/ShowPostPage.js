@@ -1,22 +1,22 @@
 import React from 'react';
-import Post from '../components/Post';
+import Event from '../components/Event';
 import Loading from '../components/Loading';
 import { Redirect } from 'react-router-dom';
 
 class ShowPostPage extends React.Component {
   state = {
     loading: true,
-    post: null,
+    event: null,
     notFound: false,
   }
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    fetch("/api/posts/"+id)
+    fetch("/api/events/"+id)
       .then(res => res.json())
       .then(post => {
         this.setState({
-          post: <Post {...post} />,
+          event: <Event {...post} />,
           loading: false,
         });
       })
@@ -31,7 +31,7 @@ class ShowPostPage extends React.Component {
   render() {
     if(this.state.notFound) return <Redirect to="/" />;
     if(this.state.loading) return <Loading />;
-    return this.state.post;
+    return this.state.event;
   }
 }
 

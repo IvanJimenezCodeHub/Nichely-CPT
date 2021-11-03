@@ -5,23 +5,37 @@ class PostFormPage extends React.Component {
   state = {
     error: false,
     success: false,
-    content: '',
+    eventName: '',
+    eventDescription: '',
+    eventLocation: ''
   }
 
-  contentChanged = (event) => {
+  eventNameChanged = (event) => {
     this.setState({
-      content: event.target.value
+      eventName: event.target.value
+    });
+  }
+
+  eventDescriptionChanged = (event) => {
+    this.setState({
+      eventDescription: event.target.value
+    });
+  }
+
+  eventLocationChanged = (event) => {
+    this.setState({
+      eventLocation: event.target.value
     });
   }
 
   savePost = (event) => {
-    fetch("/api/posts/", {
+    fetch("/api/events/", {
       method: 'POST',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({content: this.state.content}),
+      body: JSON.stringify({eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation })
     })
       .then(res => {
         if(res.ok) {
@@ -49,7 +63,7 @@ class PostFormPage extends React.Component {
     if(this.state.error) {
       errorMessage = (
         <div className="alert alert-danger">
-          "There was an error saving this post."
+          "There was an error saving this event."
         </div>
       );
     }
@@ -60,12 +74,26 @@ class PostFormPage extends React.Component {
         <div className="input-group">
           <input 
             type="text" 
-            placeholder="Add your words of wisdom here..." 
-            value={this.state.content}
+            placeholder="Add event Name" 
+            value={this.state.eventName}
             className="form-control mr-3 rounded"
-            onChange={this.contentChanged}
+            onChange={this.eventNameChanged}
           />
-          <button className="btn btn-primary" onClick={this.savePost}>Save Post</button>
+          <input 
+            type="text" 
+            placeholder="Add event description" 
+            value={this.state.eventDescription}
+            className="form-control mr-3 rounded"
+            onChange={this.eventDescriptionChanged}
+          />
+          <input 
+            type="text" 
+            placeholder="Add event location" 
+            value={this.state.eventLocation}
+            className="form-control mr-3 rounded"
+            onChange={this.eventLocationChanged}
+          />
+          <button className="btn btn-primary" onClick={this.savePost}>Save event</button>
         </div>
       </div>
     );

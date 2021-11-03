@@ -20,8 +20,8 @@ function Navigation(props) {
       <Link className="navbar-brand" to="/">Micro Blog</Link>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/posts/new">
-            Create a Micro Post
+          <NavLink className="nav-link" exact to="/events/new">
+            Create a Micro Event
           </NavLink>
         </li>
         <li className="nav-item">
@@ -43,8 +43,8 @@ class App extends React.Component {
           <div className="container-fluid text-center">
             <div className="row justify-content-center">
               <Switch>
-                <Route path="/posts/new" component={PostFormPage} />
-                <Route path="/posts/:id" component={ShowPostPage} />
+                <Route path="/events/new" component={PostFormPage} />
+                <Route path="/events/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/" component={PostsListPage} />
               </Switch>

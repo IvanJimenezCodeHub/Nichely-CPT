@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
-const { Post } = db;
+const { Event } = db;
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
@@ -17,15 +17,18 @@ const { Post } = db;
 
 
 router.get('/', (req,res) => {
-  Post.findAll({})
-    .then(posts => res.json(posts));
+  Event.findAll({})
+    .then(events => res.json(events));
 });
 
 
 router.post('/', (req, res) => {
-  let { content } = req.body;
-  
-  Post.create({ content })
+  let { eventName } = req.body.eventName;
+  let { eventDescription } = req.body.eventDescription;
+
+  let { eventLocation } = req.body.eventLocation;
+
+  Event.create({ eventName, eventDescription,  eventLocation })
     .then(post => {
       res.status(201).json(post);
     })
@@ -37,7 +40,7 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const { id } = req.params;
-  Post.findByPk(id)
+  Event.findByPk(id)
     .then(post => {
       if(!post) {
         return res.sendStatus(404);
@@ -50,7 +53,7 @@ router.get('/:id', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const { id } = req.params;
-  Post.findByPk(id)
+  Event.findByPk(id)
     .then(post => {
       if(!post) {
         return res.sendStatus(404);
@@ -70,7 +73,7 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
-  Post.findByPk(id)
+  Event.findByPk(id)
     .then(post => {
       if(!post) {
         return res.sendStatus(404);

@@ -1,21 +1,21 @@
 import React from 'react';
-import Post from '../components/Post';
+import Event from '../components/Event';
 import Loading from '../components/Loading';
 
 
 class PostsListPage extends React.Component {
   state = {
-    posts: [],
+    events: [],
     loading: true,
   }
 
   componentDidMount() {
-    fetch("/api/posts")
+    fetch("/api/events")
       .then(res => res.json())
-      .then(posts => {
+      .then(events => {
         this.setState({
           loading: false,
-          posts: posts.map((p,ii) => <Post {...p} key={ii} />),
+          events: events.map((p,ii) => <Event {...p} key={ii} />),
         });
       })
       .catch(err => console.log("API ERROR: ", err));
@@ -29,7 +29,7 @@ class PostsListPage extends React.Component {
     return (
       <div className="container-fluid text-center">
         <div className="row justify-content-center">
-          { this.state.posts }
+          { this.state.events }
         </div>
       </div>
     );
