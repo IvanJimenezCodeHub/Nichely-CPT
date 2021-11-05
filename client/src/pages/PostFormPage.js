@@ -36,12 +36,15 @@ class PostFormPage extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation })
+
     })
       .then(res => {
         if(res.ok) {
+          console.log("validated")
           return res.json()
         }
-
+        console.log(res.body);
+        console.log("not valid");
         throw new Error('Content validation');
       })
       .then(post => {
@@ -50,6 +53,7 @@ class PostFormPage extends React.Component {
         });
       })
       .catch(err => {
+        console.log("err caught by savePost() ");
         this.setState({
           error: true,
         });
@@ -69,6 +73,9 @@ class PostFormPage extends React.Component {
     }
 
     return (
+      // todo: 
+        // make these 3 form items into one column
+        // thoughts? -- matin
       <div className="col-10 col-md-8 col-lg-7">
         { errorMessage }
         <div className="input-group">
