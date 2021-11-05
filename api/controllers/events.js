@@ -5,11 +5,11 @@ const { Event } = db;
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
-//    GET    /posts
-//    POST   /posts
-//    GET    /posts/:id
-//    PUT    /posts/:id
-//    DELETE /posts/:id 
+//    GET    /events
+//    POST   /events
+//    GET    /events/:id
+//    PUT    /events/:id
+//    DELETE /events/:id 
 
 // There are other styles for creating these route handlers, we typically
 // explore other patterns to reduce code duplication.
@@ -23,18 +23,20 @@ router.get('/', (req,res) => {
 
 
 router.post('/', (req, res) => {
+
   let { eventName } = req.body.eventName;
   let { eventDescription } = req.body.eventDescription;
-
   let { eventLocation } = req.body.eventLocation;
 
   Event.create({ eventName, eventDescription,  eventLocation })
     .then(post => {
+      console.log("created!");
       res.status(201).json(post);
     })
     .catch(err => {
       res.status(400).json(err);
     });
+
 });
 
 
@@ -43,6 +45,7 @@ router.get('/:id', (req, res) => {
   Event.findByPk(id)
     .then(post => {
       if(!post) {
+        console.log("Error getting!\n");
         return res.sendStatus(404);
       }
 
@@ -56,6 +59,7 @@ router.put('/:id', (req, res) => {
   Event.findByPk(id)
     .then(post => {
       if(!post) {
+        console.log("Error updatting (put). Event was not found!\n");
         return res.sendStatus(404);
       }
 
@@ -76,6 +80,7 @@ router.delete('/:id', (req, res) => {
   Event.findByPk(id)
     .then(post => {
       if(!post) {
+        console.log("Error deleting. Event was not found!\n");
         return res.sendStatus(404);
       }
 

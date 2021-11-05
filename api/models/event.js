@@ -9,21 +9,21 @@ module.exports = (sequelize, DataTypes) => {
     eventName: {
       type: DataTypes.STRING,
       validate: {
-        len: [3, 250],
+        len: [5, 250],
         notEmpty: true,
       }
     },
     eventDescription: {
       type: DataTypes.STRING,
       validate: {
-        len: [3, 250],
+        len: [10, 250],
         notEmpty: true,
       }
     },
     eventLocation: {
       type: DataTypes.STRING,
       validate: {
-        len: [3, 250],
+        len: [5, 250],
         notEmpty: true,
       }
     },
