@@ -14,9 +14,9 @@ class ShowPostPage extends React.Component {
     const { id } = this.props.match.params;
     fetch("/api/events/"+id)
       .then(res => res.json())
-      .then(post => {
+      .then(ev => {
         this.setState({
-          event: <Event {...post} />,
+          event: <Event {...ev} />,
           loading: false,
         });
       })

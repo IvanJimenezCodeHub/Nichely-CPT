@@ -44,7 +44,6 @@ class PostFormPage extends React.Component {
           return res.json()
         }
         console.log(res.body);
-        console.log("not valid");
         throw new Error('Content validation');
       })
       .then(post => {
@@ -53,7 +52,6 @@ class PostFormPage extends React.Component {
         });
       })
       .catch(err => {
-        console.log("err caught by savePost() ");
         this.setState({
           error: true,
         });
@@ -100,7 +98,7 @@ class PostFormPage extends React.Component {
             className="form-control mr-3 rounded"
             onChange={this.eventLocationChanged}
           />
-          <button className="btn btn-primary" onClick={this.savePost}>Save event</button>
+          <button className="btn btn-primary" onClick={this.savePost}>Publish event</button>
         </div>
       </div>
     );
