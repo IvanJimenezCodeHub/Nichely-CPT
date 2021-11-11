@@ -5,9 +5,7 @@ class PostFormPage extends React.Component {
   state = {
     error: false,
     success: false,
-    eventName: '',
-    eventDescription: '',
-    eventLocation: ''
+    eventName: ''
   }
 
   eventNameChanged = (event) => {
@@ -16,17 +14,17 @@ class PostFormPage extends React.Component {
     });
   }
 
-  eventDescriptionChanged = (event) => {
-    this.setState({
-      eventDescription: event.target.value
-    });
-  }
+  // eventDescriptionChanged = (event) => {
+  //   this.setState({
+  //     eventDescription: event.target.value
+  //   });
+  // }
 
-  eventLocationChanged = (event) => {
-    this.setState({
-      eventLocation: event.target.value
-    });
-  }
+  // eventLocationChanged = (event) => {
+  //   this.setState({
+  //     eventLocation: event.target.value
+  //   });
+  // }
 
   savePost = (event) => {
     fetch("/api/events/", {
@@ -35,15 +33,15 @@ class PostFormPage extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation })
-
+      body: JSON.stringify({eventName: this.state.eventName}),
     })
       .then(res => {
         if(res.ok) {
           console.log("validated")
+          console.log(res.body)
           return res.json()
         }
-        console.log(res.body);
+
         throw new Error('Content validation');
       })
       .then(post => {
@@ -84,7 +82,7 @@ class PostFormPage extends React.Component {
             className="form-control mr-3 rounded"
             onChange={this.eventNameChanged}
           />
-          <input 
+          {/* <input 
             type="text" 
             placeholder="Add event description" 
             value={this.state.eventDescription}
@@ -97,7 +95,7 @@ class PostFormPage extends React.Component {
             value={this.state.eventLocation}
             className="form-control mr-3 rounded"
             onChange={this.eventLocationChanged}
-          />
+          /> */}
           <button className="btn btn-primary" onClick={this.savePost}>Publish event</button>
         </div>
       </div>

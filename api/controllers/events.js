@@ -25,10 +25,10 @@ router.get('/', (req,res) => {
 router.post('/', (req, res) => {
 
   let { eventName } = req.body.eventName;
-  let { eventDescription } = req.body.eventDescription;
-  let { eventLocation } = req.body.eventLocation;
+  // let { eventDescription } = req.body.eventDescription;
+  // let { eventLocation } = req.body.eventLocation;
 
-  Event.create({ eventName, eventDescription,  eventLocation })
+  Event.create({ eventName })
     .then(post => {
       console.log("created!");
       res.status(201).json(post);
