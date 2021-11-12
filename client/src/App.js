@@ -10,6 +10,7 @@ import PostsListPage from './pages/PostsListPage';
 import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
+import LogInPage from './pages/LogInPage';
 
 import './App.css';
 
@@ -20,6 +21,11 @@ function Navigation(props) {
       <Link className="navbar-brand" to="/events">Nichely!</Link>
 
       <ul className="navbar-nav mr-auto">
+      <li className="nav-item">
+          <NavLink className="nav-link" exact to="/log-in">
+            Log In
+          </NavLink>
+        </li>
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/events/new">
             Create a Micro Event
@@ -30,6 +36,7 @@ function Navigation(props) {
             About Us
           </NavLink>
         </li>
+
       </ul>
     </nav>
   );
@@ -44,6 +51,7 @@ class App extends React.Component {
           <div className="container-fluid text-center">
             <div className="row justify-content-center">
               <Switch>
+                <Route path="/log-in" component={LogInPage} />
                 <Route path="/events/new" component={PostFormPage} />
                 <Route path="/events/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
