@@ -15,7 +15,7 @@ class PostsListPage extends React.Component {
       .then(events => {
         this.setState({
           loading: false,
-          events: events.map((p,ii) => <Event {...p} key={ii} />),
+          events: events.map((eventInfo,ii) => <Event {...eventInfo} key={ii} />),
         });
       })
       .catch(err => console.log("API ERROR: ", err));

@@ -13,21 +13,21 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       }
     }
-    // ,
-    // eventDescription: {
-    //   type: DataTypes.STRING,
-    //   validate: {
-    //     len: [1, 400],
-    //     notEmpty: true,
-    //   }
-    // },
-    // eventLocation: {
-    //   type: DataTypes.STRING,
-    //   validate: {
-    //     len: [1, 20],
-    //     notEmpty: true,
-    //   }
-    // },
+    ,
+    eventDescription: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [1, 400],
+        notEmpty: true,
+      }
+    },
+    eventLocation: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [1, 20],
+        notEmpty: true,
+      }
+    },
   }, {
     sequelize,
     modelName: 'event'

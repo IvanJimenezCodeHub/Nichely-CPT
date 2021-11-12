@@ -5,7 +5,9 @@ class PostFormPage extends React.Component {
   state = {
     error: false,
     success: false,
-    eventName: ''
+    eventName: '',
+    eventDescription: '',
+    eventLocation: ''
   }
 
   eventNameChanged = (event) => {
@@ -14,26 +16,27 @@ class PostFormPage extends React.Component {
     });
   }
 
-  // eventDescriptionChanged = (event) => {
-  //   this.setState({
-  //     eventDescription: event.target.value
-  //   });
-  // }
+  eventDescriptionChanged = (event) => {
+    this.setState({
+      eventDescription: event.target.value
+    });
+  }
 
-  // eventLocationChanged = (event) => {
-  //   this.setState({
-  //     eventLocation: event.target.value
-  //   });
-  // }
+  eventLocationChanged = (event) => {
+    this.setState({
+      eventLocation: event.target.value
+    });
+  }
 
   savePost = (event) => {
+    console.log(this.state.eventName)
     fetch("/api/events/", {
       method: 'POST',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({eventName: this.state.eventName}),
+      body: JSON.stringify({eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation}),
     })
       .then(res => {
         if(res.ok) {
@@ -82,7 +85,7 @@ class PostFormPage extends React.Component {
             className="form-control mr-3 rounded"
             onChange={this.eventNameChanged}
           />
-          {/* <input 
+          <input 
             type="text" 
             placeholder="Add event description" 
             value={this.state.eventDescription}
@@ -95,7 +98,7 @@ class PostFormPage extends React.Component {
             value={this.state.eventLocation}
             className="form-control mr-3 rounded"
             onChange={this.eventLocationChanged}
-          /> */}
+          />
           <button className="btn btn-primary" onClick={this.savePost}>Publish event</button>
         </div>
       </div>
