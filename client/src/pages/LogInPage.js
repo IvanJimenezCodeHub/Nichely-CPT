@@ -1,4 +1,5 @@
 import React from 'react';
+import './css/login.css';
 import partyImage from './images/party.jpg';
 import yogaImage from './images/yoga.jpg';
 import selfieImage from './images/selfie.jpg';
