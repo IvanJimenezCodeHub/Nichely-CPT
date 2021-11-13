@@ -28,7 +28,7 @@ function Navigation(props) {
         </li>
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/events/new">
-            Create a Micro Event
+            Create
           </NavLink>
         </li>
         <li className="nav-item">

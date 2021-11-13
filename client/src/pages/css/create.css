@@ -1,0 +1,23 @@
+.input-group{
+margin-top:40px;
+}
+
+#top_text_create{
+font-family: 'Bebas Neue', 'Roboto';
+}
+
+.event_prompt_info{
+margin-bottom:4px;
+text-align:start;
+}
+
+.event_name_input, .event_description_input, .event_location_input{
+margin-bottom:10px;
+width:120%;
+border-radius: 4px;
+outline:none;
+}
+
+button{
+margin-top:40px;
+}
