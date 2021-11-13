@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import './css/create.css';
 
 class PostFormPage extends React.Component {
   state = {
@@ -72,36 +73,46 @@ class PostFormPage extends React.Component {
     }
 
     return (
-      // todo: 
-        // make these 3 form items into one column
-        // thoughts? -- matin
-      <div className="col-10 col-md-8 col-lg-7">
-        { errorMessage }
-        <div className="input-group">
-          <input 
-            type="text" 
-            placeholder="Add event Name" 
-            value={this.state.eventName}
-            className="form-control mr-3 rounded"
-            onChange={this.eventNameChanged}
-          />
-          <input 
-            type="text" 
-            placeholder="Add event description" 
-            value={this.state.eventDescription}
-            className="form-control mr-3 rounded"
-            onChange={this.eventDescriptionChanged}
-          />
-          <input 
-            type="text" 
-            placeholder="Add event location" 
-            value={this.state.eventLocation}
-            className="form-control mr-3 rounded"
-            onChange={this.eventLocationChanged}
-          />
-          <button className="btn btn-primary" onClick={this.savePost}>Publish event</button>
-        </div>
+      <div className="row justify-content-center">
+        <div className="col-4">
+          <h2 id="top_text_create">Create Event</h2>
+            { errorMessage }
+          <div className="input-group">
+            <label htmlFor="name">
+              <p className="event_prompt_info">Name your event</p>
+              <input 
+                type="text" 
+                className="event_name_input"
+                placeholder="Name" 
+                value={this.state.eventName}
+                onChange={this.eventNameChanged}
+              />
+            </label>
+            <label htmlFor="description">
+              <p className="event_prompt_info">Describe your event</p>
+              <input 
+                type="textarea" 
+                className="event_description_input"
+                placeholder="Description" 
+                value={this.state.eventDescription}
+                onChange={this.eventDescriptionChanged}
+              />
+            </label>
+            <label htmlFor="location">
+              <p className="event_prompt_info">Choose location</p>
+              <input 
+                type="text" 
+                className="event_location_input"
+                placeholder="Location" 
+                value={this.state.eventLocation}
+                className="location"
+                onChange={this.eventLocationChanged}
+              />
+            </label>
+            <button className="btn btn-primary" onClick={this.savePost}>Create event</button>
+          </div>
       </div>
+    </div>
     );
   }
 }
