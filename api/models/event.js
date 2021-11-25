@@ -28,6 +28,20 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       }
     },
+    eventTime: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [1, 20],
+        notEmpty: true,
+      }
+    },
+    relevantInterests: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [1, 20],
+        notEmpty: true,
+      }
+    },
   }, {
     sequelize,
     modelName: 'event'

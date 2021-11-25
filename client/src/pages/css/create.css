@@ -11,7 +11,7 @@ margin-bottom:4px;
 text-align:start;
 }
 
-.event_name_input, .event_description_input, .event_location_input{
+.event_name_input, .event_description_input, .event_location_input, .event_time_input{
 margin-bottom:10px;
 width:120%;
 border-radius: 4px;

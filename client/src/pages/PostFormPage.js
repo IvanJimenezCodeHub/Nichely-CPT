@@ -8,7 +8,9 @@ class PostFormPage extends React.Component {
     success: false,
     eventName: '',
     eventDescription: '',
-    eventLocation: ''
+    eventLocation: '',
+    eventTime: '',
+    relevantInterests: ''
   }
 
   eventNameChanged = (event) => {
@@ -28,6 +30,17 @@ class PostFormPage extends React.Component {
       eventLocation: event.target.value
     });
   }
+  
+  eventTimeChanged = (event) => {
+    this.setState({
+      eventTime: event.target.value
+    });
+  }
+  relevantInterestsChanged = (event) => {
+    this.setState({
+      relevantInterests: event.target.value
+    });
+  }
 
   savePost = (event) => {
     console.log(this.state.eventName)
@@ -37,7 +50,7 @@ class PostFormPage extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation}),
+      body: JSON.stringify({eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation, eventTime: this.state.eventTime, relevantInterests: this.state.relevantInterests}),
     })
       .then(res => {
         if(res.ok) {
@@ -74,7 +87,7 @@ class PostFormPage extends React.Component {
 
     return (
       <div className="row justify-content-center">
-        <div className="col-4">
+        <div className="col-3">
           <h2 id="top_text_create">Create Event</h2>
             { errorMessage }
           <div className="input-group">
@@ -91,7 +104,7 @@ class PostFormPage extends React.Component {
             <label htmlFor="description">
               <p className="event_prompt_info">Describe your event</p>
               <input 
-                type="textarea" 
+                type="text" 
                 className="event_description_input"
                 placeholder="Description" 
                 value={this.state.eventDescription}
@@ -109,6 +122,31 @@ class PostFormPage extends React.Component {
                 onChange={this.eventLocationChanged}
               />
             </label>
+            <label htmlFor="time">
+              <p className="event_prompt_info">Choose time</p>
+              <input 
+                type="text" 
+                className="event_time_input"
+                placeholder="time" 
+                value={this.state.eventTime}
+                className="time"
+                onChange={this.eventTimeChanged}
+              />
+            </label>
+            <label htmlFor="interests">
+              <p className="event_prompt_info">List relevant interests</p>
+              <input 
+                type="text" 
+                className="event_time_input"
+                placeholder="interests" 
+                value={this.state.relevantInterests}
+                className="interests"
+                onChange={this.relevantInterestsChanged}
+              />
+            </label>
+            
+          
+
             <button className="btn btn-primary" onClick={this.savePost}>Create event</button>
           </div>
       </div>
