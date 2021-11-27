@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Event({ eventName, eventLocation, eventDescription, eventTime, relevantInterests, createdAt, id }) {
+function Event({ eventName, eventLocation, eventDescription, eventTime, eventDate, relevantInterests, createdAt, id }) {
   return (
     <div className="col-10 col-md-8 col-lg-7">
       <div className="card mb-4 shadow">
@@ -12,6 +12,8 @@ function Event({ eventName, eventLocation, eventDescription, eventTime, relevant
           <b>Event Location:</b> { eventLocation }
           <br></br>
           <b>Event Time:</b> { eventTime} 
+          <br></br>
+          <b>Event Date:</b> {eventDate}
           <br></br>
           <b>Description:</b> { eventDescription} 
           <br></br>

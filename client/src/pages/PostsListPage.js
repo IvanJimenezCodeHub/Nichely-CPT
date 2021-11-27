@@ -22,16 +22,18 @@ class PostsListPage extends React.Component {
   }
 
   render() {
-    if(this.state.loading) {
-      return <Loading />;
-    }
-
     return (
-      <div className="container-fluid text-center">
-        <div className="row justify-content-center">
-          { this.state.events }
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            1 of 2
+          </div>
+        <div className="col">
+            2 of 2
         </div>
       </div>
+          { this.state.events }
+        </div>
     );
   }
 }

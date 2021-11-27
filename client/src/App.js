@@ -27,6 +27,11 @@ function Navigation(props) {
           </NavLink>
         </li>
         <li className="nav-item">
+          <NavLink className="nav-link" exact to="/explore">
+            Explore
+          </NavLink>
+        </li>
+        <li className="nav-item">
           <NavLink className="nav-link" exact to="/events/new">
             Create
           </NavLink>
@@ -55,7 +60,7 @@ class App extends React.Component {
                 <Route path="/events/new" component={PostFormPage} />
                 <Route path="/events/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
-                <Route path="/" component={PostsListPage} />
+                <Route path="/explore" component={PostsListPage} />
               </Switch>
             </div>
           </div>
