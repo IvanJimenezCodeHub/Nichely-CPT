@@ -10,6 +10,7 @@ class PostFormPage extends React.Component {
     eventDescription: '',
     eventLocation: '',
     eventTime: '',
+    eventDate:'',
     relevantInterests: ''
   }
 
@@ -36,6 +37,11 @@ class PostFormPage extends React.Component {
       eventTime: event.target.value
     });
   }
+  eventDateChanged = (event) => {
+    this.setState({
+      eventDate: event.target.value
+    });
+  }
   relevantInterestsChanged = (event) => {
     this.setState({
       relevantInterests: event.target.value
@@ -50,7 +56,7 @@ class PostFormPage extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation, eventTime: this.state.eventTime, relevantInterests: this.state.relevantInterests}),
+      body: JSON.stringify({eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation, eventTime: this.state.eventTime, eventDate: this.state.eventDate, relevantInterests: this.state.relevantInterests}),
     })
       .then(res => {
         if(res.ok) {
@@ -87,7 +93,7 @@ class PostFormPage extends React.Component {
 
     return (
       <div className="row justify-content-center">
-        <div className="col-3">
+        <div className="col-2">
           <h2 id="top_text_create">Create Event</h2>
             { errorMessage }
           <div className="input-group">
@@ -112,40 +118,42 @@ class PostFormPage extends React.Component {
               />
             </label>
             <label htmlFor="location">
-              <p className="event_prompt_info">Choose location</p>
+              <p className="event_prompt_info">Set location</p>
               <input 
                 type="text" 
                 className="event_location_input"
                 placeholder="Location" 
                 value={this.state.eventLocation}
-                className="location"
                 onChange={this.eventLocationChanged}
               />
             </label>
             <label htmlFor="time">
-              <p className="event_prompt_info">Choose time</p>
+              <p className="event_prompt_info">Set date and time</p>
               <input 
-                type="text" 
+                type="time" 
                 className="event_time_input"
-                placeholder="time" 
                 value={this.state.eventTime}
-                className="time"
                 onChange={this.eventTimeChanged}
               />
+
+              <input 
+                type="date" 
+                className="event_date_input"
+                value={this.state.eventDate}
+                onChange={this.eventDateChanged}
+              />
             </label>
+
             <label htmlFor="interests">
               <p className="event_prompt_info">List relevant interests</p>
               <input 
                 type="text" 
-                className="event_time_input"
+                className="event_interests_input"
                 placeholder="interests" 
                 value={this.state.relevantInterests}
-                className="interests"
                 onChange={this.relevantInterestsChanged}
               />
             </label>
-            
-          
 
             <button className="btn btn-primary" onClick={this.savePost}>Create event</button>
           </div>
