@@ -11,11 +11,23 @@ margin-bottom:4px;
 text-align:start;
 }
 
-.event_name_input, .event_description_input, .event_location_input, .event_time_input{
+.event_name_input, .event_description_input, .event_location_input, .event_interests_input{
 margin-bottom:10px;
 width:120%;
 border-radius: 4px;
 outline:none;
+}
+
+.event_time_input{
+margin-bottom:10px;
+margin-right:250px;
+border-radius: 4px;
+}
+
+.event_date_input{
+margin-bottom:10px;
+margin-right:190px;
+border-radius: 4px;  
 }
 
 button{
