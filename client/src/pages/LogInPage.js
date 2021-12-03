@@ -4,7 +4,7 @@ import partyImage from './images/party.jpg';
 import yogaImage from './images/yoga.jpg';
 import selfieImage from './images/selfie.jpg';
 import sportsImage from './images/sports.jpg';
-import nichelyLogo from './images/nichely logo.png';
+import nichelyLogo from './images/nichely_logo.png';
 
 class LogInPage extends React.Component{
     constructor(props){
