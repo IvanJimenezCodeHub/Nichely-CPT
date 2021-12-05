@@ -1,5 +1,6 @@
 import React from 'react';
 import Event from '../components/Event';
+import EventFull from '../components/EventFull';
 import Loading from '../components/Loading';
 import { Redirect } from 'react-router-dom';
 
@@ -16,7 +17,7 @@ class ShowPostPage extends React.Component {
       .then(res => res.json())
       .then(ev => {
         this.setState({
-          event: <Event {...ev} />,
+          event: <EventFull {...ev} />,
           loading: false,
         });
       })
@@ -31,7 +32,9 @@ class ShowPostPage extends React.Component {
   render() {
     if(this.state.notFound) return <Redirect to="/" />;
     if(this.state.loading) return <Loading />;
-    return this.state.event;
+    return( 
+      <h1>{this.state.event}</h1>
+    );
   }
 }
 

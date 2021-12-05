@@ -18,6 +18,12 @@ border-radius: 4px;
 outline:none;
 }
 
+textarea{
+    height:120px;
+    border: solid 2px;
+    border-radius: 4px;
+}
+
 .event_time_input{
 margin-bottom:10px;
 margin-right:250px;

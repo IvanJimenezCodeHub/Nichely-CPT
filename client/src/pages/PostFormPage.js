@@ -1,6 +1,7 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, BrowserRouter as Router, Route } from 'react-router-dom';
 import './css/create.css';
+import PostsListPage from './PostsListPage';
 
 class PostFormPage extends React.Component {
   state = {
@@ -80,7 +81,7 @@ class PostFormPage extends React.Component {
   }
 
   render() {
-    if(this.state.success) return <Redirect to="/" />;
+    if(this.state.success) return <Redirect to="/explore" />;
 
     let errorMessage = null;
     if(this.state.error) {
@@ -109,7 +110,7 @@ class PostFormPage extends React.Component {
             </label>
             <label htmlFor="description">
               <p className="event_prompt_info">Describe your event</p>
-              <input 
+              <textarea 
                 type="text" 
                 className="event_description_input"
                 placeholder="Description" 
@@ -154,6 +155,10 @@ class PostFormPage extends React.Component {
                 onChange={this.relevantInterestsChanged}
               />
             </label>
+
+            <Router>
+              <Route path="/explore" component={PostsListPage} />
+            </Router>
 
             <button className="btn btn-primary" onClick={this.savePost}>Create event</button>
           </div>
