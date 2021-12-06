@@ -147,7 +147,7 @@ class PostFormPage extends React.Component {
 
             <label htmlFor="interests">
               <p className="event_prompt_info">List relevant interests</p>
-              <input 
+              <textarea 
                 type="text" 
                 className="event_interests_input"
                 placeholder="interests" 
