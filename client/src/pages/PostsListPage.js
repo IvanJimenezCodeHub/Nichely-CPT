@@ -1,5 +1,6 @@
 import React from 'react';
 import Event from '../components/Event';
+import './css/explore.css';
 import Loading from '../components/Loading';
 
 
@@ -7,6 +8,13 @@ class PostsListPage extends React.Component {
   state = {
     events: [],
     loading: true,
+    eventName: '',
+  }
+
+  eventNameChanged = (event) => {
+    this.setState({
+      eventName: event.target.value
+    });
   }
 
   componentDidMount() {
@@ -26,13 +34,30 @@ class PostsListPage extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col">
-            1 of 2
+            <div className="results-list">
+              <div className="search">
+                <div className="input">
+                  <label htmlFor="event">
+                  <p className="event_prompt_info">Search for events</p>
+                  <input 
+                    type="text" 
+                    className="event_name_input"
+                    placeholder="Event" 
+                    value={this.state.eventName}
+                    onChange={this.eventNameChanged}
+                  />
+                  </label>
+                </div>
+              </div>
+            <div className="event-box">
+              { this.state.events }
+            </div>
           </div>
+        </div>
         <div className="col">
-            2 of 2
+            <h2>Map here, perhaps</h2>
         </div>
       </div>
-          { this.state.events }
         </div>
     );
   }

@@ -1,0 +1,35 @@
+h1{
+    font-family: 'Bebas Neue', 'Roboto';
+    margin:25px 0px 25px 0px;
+}
+
+p{
+    font-size:15px;
+    font-family: 'Arial';
+
+}
+
+button{
+    font-family:'Arial';
+    padding: 0px 10px;
+}
+
+.rsvpbtn{
+    margin-right:20px;
+}
+
+.user-info{
+    margin-top:40px;
+}
+
+.user-name{
+    font-size:20px;
+}
+
+.map{
+    text-align:left;
+    border:solid 2px;
+    box-shadow:3px 5px rgba(51, 51, 51, 0.18);
+    border-radius:5px;
+    padding:10px 20px;
+}

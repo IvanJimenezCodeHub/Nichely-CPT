@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     }
     ,
     eventDescription: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       validate: {
         len: [1, 400],
         notEmpty: true,
@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     relevantInterests: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       validate: {
         len: [1, 20],
         notEmpty: true,
