@@ -1,7 +1,9 @@
 import React from 'react';
 import Event from '../components/Event';
 import './css/explore.css';
+import './css/map.css';
 import Loading from '../components/Loading';
+import Map from '../components/Maps';
 
 
 class PostsListPage extends React.Component {
@@ -55,7 +57,9 @@ class PostsListPage extends React.Component {
           </div>
         </div>
         <div className="col">
-            <h2>Map here, perhaps</h2>
+            <div className="map">
+              {Map()}
+            </div>
         </div>
       </div>
         </div>

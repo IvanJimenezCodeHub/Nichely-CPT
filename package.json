@@ -13,9 +13,11 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "google-maps-react": "^2.0.6",
     "morgan": "^1.10.0",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
+    "react-google-maps": "^9.4.5",
     "sequelize": "^6.7.0"
   },
   "devDependencies": {
