@@ -3,17 +3,19 @@ margin-top:40px;
 }
 
 #top_text_create{
+margin-top:15px;
 font-family: 'Bebas Neue', 'Roboto';
 }
 
 .event_prompt_info{
 margin-bottom:4px;
 text-align:start;
+font-size:18px;
 }
 
 .event_name_input, .event_description_input, .event_location_input, .event_interests_input{
 margin-bottom:10px;
-width:120%;
+width:143%;
 border-radius: 4px;
 outline:none;
 }
@@ -37,5 +39,5 @@ border-radius: 4px;
 }
 
 button{
-margin-top:40px;
+margin: 40px 0px;
 }
