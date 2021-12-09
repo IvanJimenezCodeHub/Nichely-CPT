@@ -1,8 +1,8 @@
 import React from 'react';
-import { 
-  BrowserRouter as Router, 
-  Switch, 
-  Route, 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
   Link,
   NavLink
 } from 'react-router-dom';
@@ -15,22 +15,22 @@ import SignUpPage from './pages/SignUpPage';
 import { AuthProvider } from './context/AuthContext';
 import AuthButton from './components/AuthButton';
 import PrivateRoute from './components/PrivateRoute';
+import nichelyLogo from './pages/images/nichely_logo.png';
 
 import './App.css';
 
-
 function Navigation(props) {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <Link className="navbar-brand" to="/events">Nichely!</Link>
-
+    <nav className="navbar navbar-expand-sm navbar-light shadow mb-3">
+      <Link className="navbar-brand" to="/events">
+        <img 
+        src={nichelyLogo} 
+        width="135px"
+        height="70px"
+        className="d-inline-block align-top">
+        </img>
+      </Link>
       <ul className="navbar-nav mr-auto">
-        {/*<li className="nav-item">
-          <NavLink className="nav-link" exact to="/log-in">
-            Log In
-          </NavLink>
-        </li>
-        */}
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/explore">
             Explore

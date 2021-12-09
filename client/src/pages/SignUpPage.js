@@ -98,45 +98,41 @@ class SignUpPage extends React.Component {
                             <img src={nichelyLogo} id='nichelyLogo'></img>
                             {errorMessage}
                             <div>
-                                <label className='firstNameTxtBox' htmlFor='firstName'></label>
-                                <br />
                                 <input
                                     type='text'
                                     id='firstName'
                                     name='firstName'
+                                    className='firstNameTxtBox'
                                     placeholder='First Name'
                                     value={this.state.firstName}
                                     onChange={this.firstNameChanged}
                                 />
                                 <br />
-                                <label className='lastNameTxtBox' htmlFor='lastName'></label>
-                                <br />
                                 <input
                                     type='text'
                                     id='lastName'
                                     name='lastName'
+                                    className='lastNameTxtBox'
                                     placeholder='Last Name'
                                     value={this.state.lastName}
                                     onChange={this.lastNameChanged}
                                 />
                                 <br />
-                                <label className='emailTxtBox' htmlFor='emailAddress'></label>
-                                <br />
                                 <input
                                     type='text'
                                     id='emailAddress'
                                     name='emailAddress'
+                                    className='emailTxtBox'
                                     placeholder='Email'
                                     value={this.state.emailAddress}
                                     onChange={this.emailChanged}
                                 />
                                 <br />
-                                <label className='passwordTxtBox' htmlFor='password'></label>
-                                <br />
                                 <input
                                     type='password'
                                     id='password'
                                     name='password'
+                                    className='passwordTxtBox'
                                     placeholder='Password'
                                     value={this.state.password}
                                     onChange={this.passwordChanged}
