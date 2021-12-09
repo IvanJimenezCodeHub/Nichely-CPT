@@ -12,7 +12,8 @@ class PostFormPage extends React.Component {
     eventLocation: '',
     eventTime: '',
     eventDate:'',
-    relevantInterests: ''
+    relevantInterests: '',
+    hostId: '', // TODO: this wont be input, it must be got from authentication when logged in somehow.
   }
 
   eventNameChanged = (event) => {
@@ -57,7 +58,11 @@ class PostFormPage extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation, eventTime: this.state.eventTime, eventDate: this.state.eventDate, relevantInterests: this.state.relevantInterests}),
+      body: JSON.stringify({
+          eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation, 
+          eventTime: this.state.eventTime, eventDate: this.state.eventDate, relevantInterests: this.state.relevantInterests, 
+          hostId: this.state.hostId, numRSVP: 1
+        }),
     })
       .then(res => {
         if(res.ok) {
