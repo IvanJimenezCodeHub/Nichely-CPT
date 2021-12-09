@@ -26,7 +26,7 @@ class SignUpPage extends React.Component{
                     </form>
                 </div>
                 <a href = './log-in'>
-                        <input className = 'logInLink' type="submit" value= "Log In"></input>
+                        <input className = 'logInLink' type="submit" value= "Already have an account? Log In"></input>
                 </a>
             </div>
         );

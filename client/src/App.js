@@ -10,7 +10,7 @@ import PostsListPage from './pages/PostsListPage';
 import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
-import LoginPage from './pages/LoginPage';
+import LoginPage from './pages/LogInPage';
 import SignUpPage from './pages/SignUpPage';
 import { AuthProvider } from './context/AuthContext';
 import AuthButton from './components/AuthButton';
