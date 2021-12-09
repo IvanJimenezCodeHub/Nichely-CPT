@@ -140,6 +140,9 @@ class SignUpPage extends React.Component {
                         <img src={soccerImg} id="soccer"></img>
                     </div>
                 </div>
+                <a href = './log-in'>
+                        <input className = 'logInLink' type="submit" value= "Already have an account? Log In"></input>
+                </a>
             </div>
         );
     }

@@ -98,8 +98,9 @@ class PostFormPage extends React.Component {
     }
 
     return (
+      <div className="container">
       <div className="row justify-content-center">
-        <div className="col-2">
+        <div className="col-3">
           <h2 id="top_text_create">Create Event</h2>
             { errorMessage }
           <div className="input-group">
@@ -149,7 +150,6 @@ class PostFormPage extends React.Component {
                 onChange={this.eventDateChanged}
               />
             </label>
-
             <label htmlFor="interests">
               <p className="event_prompt_info">List relevant interests</p>
               <textarea 
@@ -161,11 +161,13 @@ class PostFormPage extends React.Component {
               />
             </label>
 
+            </div>
+
             <Router>
               <Route path="/explore" component={PostsListPage} />
             </Router>
 
-            <button className="btn btn-primary" onClick={this.savePost}>Create event</button>
+            <button className="btn btn-outline-secondary" onClick={this.savePost}>Create event</button>
           </div>
       </div>
     </div>

@@ -10,13 +10,13 @@ function EventFull({ eventName, eventLocation, eventDescription, eventTime, even
                 <h1>{ eventName }</h1>
                 <p>{ eventDescription} </p>
                 <p>Relevant interests: { relevantInterests} </p>
-                <button className="rsvpbtn btn btn-primary">RSVP</button>
-                <button className="bookmarkbtn btn btn-secondary">Bookmark</button>
+                <button className="rsvpbtn btn btn-outline-secondary">RSVP</button>
+                <button className="bookmarkbtn btn btn-outline-info">Bookmark</button>
                 <div className="user-info">
                     <div className="row">
                         <div className="col">
                             <h3>Organizer</h3>
-                            <p className="user-name"><Link to="/">User</Link></p>
+                            <p className="user-name"><Link to="/">Username</Link></p>
                             <p>user bio here!!!</p>
                         </div>
                     </div>

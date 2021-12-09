@@ -5,7 +5,7 @@ function Event({ eventName, eventLocation, eventDescription, eventTime, eventDat
   return (
     <div className="container">
       <div className="card mb-4">
-        <div className="card-body card-text ">
+        <div className="card-body card-text">
           <h5><Link to={"/events/"+id}>{ eventName }</Link></h5>
           {eventDate}
           <br></br>

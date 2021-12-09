@@ -12,6 +12,7 @@ p{
 button{
     font-family:'Arial';
     padding: 0px 10px;
+    align-items: center;
 }
 
 .rsvpbtn{
