@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('../middlewares/authentication');
 const router = express.Router();
 const db = require('../models');
 const { Event } = db;
@@ -22,7 +23,7 @@ router.get('/', (req,res) => {
 });
 
 
-router.post('/', (req, res) => {
+router.post('/', passport.isAuthenticated(), (req, res) => {
 
   let { eventName, eventDescription, eventLocation, eventTime, eventDate, relevantInterests } = req.body;
 
@@ -52,7 +53,7 @@ router.get('/:id', (req, res) => {
 });
 
 
-router.put('/:id', (req, res) => {
+router.put('/:id', passport.isAuthenticated(), (req, res) => {
   const { id } = req.params;
   Event.findByPk(id)
     .then(post => {
@@ -73,7 +74,7 @@ router.put('/:id', (req, res) => {
 });
 
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', passport.isAuthenticated(), (req, res) => {
   const { id } = req.params;
   Event.findByPk(id)
     .then(post => {
