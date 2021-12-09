@@ -10,7 +10,11 @@ import PostsListPage from './pages/PostsListPage';
 import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
-import LogInPage from './pages/LogInPage';
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
+import { AuthProvider } from './context/AuthContext';
+import AuthButton from './components/AuthButton';
+import PrivateRoute from './components/PrivateRoute';
 
 import './App.css';
 
@@ -21,11 +25,12 @@ function Navigation(props) {
       <Link className="navbar-brand" to="/events">Nichely!</Link>
 
       <ul className="navbar-nav mr-auto">
-      <li className="nav-item">
+        {/*<li className="nav-item">
           <NavLink className="nav-link" exact to="/log-in">
             Log In
           </NavLink>
         </li>
+        */}
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/explore">
             Explore
@@ -41,8 +46,13 @@ function Navigation(props) {
             About Us
           </NavLink>
         </li>
-
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/signup">
+            Sign Up
+          </NavLink>
+        </li>
       </ul>
+      <AuthButton />
     </nav>
   );
 }
@@ -51,13 +61,15 @@ function Navigation(props) {
 class App extends React.Component {
   render() {
     return (
+      <AuthProvider>
         <Router>
           <Navigation />
           <div className="container-fluid text-center">
             <div className="row justify-content-center">
               <Switch>
-                <Route path="/log-in" component={LogInPage} />
-                <Route path="/events/new" component={PostFormPage} />
+                <Route path="/log-in" component={LoginPage} />
+                <Route path="/signup" component={SignUpPage} />
+                <PrivateRoute path="/events/new" component={PostFormPage} />
                 <Route path="/events/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/explore" component={PostsListPage} />
@@ -65,6 +77,7 @@ class App extends React.Component {
             </div>
           </div>
         </Router>
+      </AuthProvider>
     );
   }
 }
