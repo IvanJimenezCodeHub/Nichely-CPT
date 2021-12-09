@@ -5,7 +5,7 @@ import nichelyLogo from './images/nichely_logo.png';
 import bookClubImg from './images/bookclub.jpg';
 import gamingImg from './images/games.jpg';
 import partyImg from './images/party2.jpg';
-import soccerImg from './images/soccer.jpg';
+import soccerImg from './images/soccer.jpeg';
 
 class SignUpPage extends React.Component {
     state = {
@@ -90,15 +90,15 @@ class SignUpPage extends React.Component {
             <div>
                 <div class="row">
                     <div class="col">
-                        <img src={bookClubImg} id="bookClub"></img>
                         <img src={gamingImg} id="gaming"></img>
+                        <img src={bookClubImg} id="bookClub"></img>
                     </div>
                     <div class="col">
                         <div className='signUpContainer'>
                             <img src={nichelyLogo} id='nichelyLogo'></img>
                             {errorMessage}
                             <div>
-                                <label className='firstNameTxtBox' htmlFor='firstName'>First Name:</label>
+                                <label className='firstNameTxtBox' htmlFor='firstName'></label>
                                 <br />
                                 <input
                                     type='text'
@@ -109,7 +109,7 @@ class SignUpPage extends React.Component {
                                     onChange={this.firstNameChanged}
                                 />
                                 <br />
-                                <label className='lastNameTxtBox' htmlFor='lastName'>Last Name:</label>
+                                <label className='lastNameTxtBox' htmlFor='lastName'></label>
                                 <br />
                                 <input
                                     type='text'
@@ -120,7 +120,7 @@ class SignUpPage extends React.Component {
                                     onChange={this.lastNameChanged}
                                 />
                                 <br />
-                                <label className='emailTxtBox' htmlFor='emailAddress'>Email Address:</label>
+                                <label className='emailTxtBox' htmlFor='emailAddress'></label>
                                 <br />
                                 <input
                                     type='text'
@@ -131,7 +131,7 @@ class SignUpPage extends React.Component {
                                     onChange={this.emailChanged}
                                 />
                                 <br />
-                                <label className='passwordTxtBox' htmlFor='password'>Password:</label>
+                                <label className='passwordTxtBox' htmlFor='password'></label>
                                 <br />
                                 <input
                                     type='password'
@@ -148,8 +148,8 @@ class SignUpPage extends React.Component {
 
                     </div>
                     <div class="col">
-                        <img src={partyImg} id="party2"></img>
                         <img src={soccerImg} id="soccer"></img>
+                        <img src={partyImg} id="party2"></img>
                     </div>
                 </div>
                 <a href = './log-in'>
