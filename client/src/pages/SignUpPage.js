@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import './css/signup.css';
 import nichelyLogo from './images/nichely_logo.png';
 import bookClubImg from './images/bookclub.jpg';
@@ -73,6 +74,18 @@ class SignUpPage extends React.Component {
     }
 
     render() {
+
+        if(this.state.success) return <Redirect to="/explore" />;
+
+        let errorMessage = null;
+        if(this.state.error) {
+          errorMessage = (
+            <div className="alert alert-danger">
+              "There was an error saving this user."
+            </div>
+          );
+        }
+
         return (
             <div>
                 <div class="row">
@@ -83,6 +96,7 @@ class SignUpPage extends React.Component {
                     <div class="col">
                         <div className='signUpContainer'>
                             <img src={nichelyLogo} id='nichelyLogo'></img>
+                            {errorMessage}
                             <div>
                                 <label className='firstNameTxtBox' htmlFor='firstName'>First Name:</label>
                                 <br />
@@ -131,9 +145,7 @@ class SignUpPage extends React.Component {
                                 <input className='signUpBtn' type="submit" onClick={this.saveUser} value="Sign Up"></input>
                             </div>
                         </div>
-                        <a href='./log-in'>
-                            <input className='logInLink' type="submit" value="Already have an account? Log In"></input>
-                        </a>
+
                     </div>
                     <div class="col">
                         <img src={partyImg} id="party2"></img>
@@ -141,7 +153,7 @@ class SignUpPage extends React.Component {
                     </div>
                 </div>
                 <a href = './log-in'>
-                        <input className = 'logInLink' type="submit" value= "Already have an account? Log In"></input>
+                    <input className = 'logInLink' type="submit" value= "Already have an account? Log In"></input>
                 </a>
             </div>
         );
