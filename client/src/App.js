@@ -15,6 +15,7 @@ import SignUpPage from './pages/SignUpPage';
 import { AuthProvider } from './context/AuthContext';
 import AuthButton from './components/AuthButton';
 import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
 import nichelyLogo from './pages/images/nichely_logo.png';
 
 import './App.css';
@@ -68,7 +69,7 @@ class App extends React.Component {
             <div className="row justify-content-center">
               <Switch>
                 <Route path="/log-in" component={LoginPage} />
-                <Route path="/signup" component={SignUpPage} />
+                <PublicRoute restricted={true} path="/signup" component={SignUpPage} />
                 <PrivateRoute path="/events/new" component={PostFormPage} />
                 <Route path="/events/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
