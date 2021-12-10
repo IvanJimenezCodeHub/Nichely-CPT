@@ -5,10 +5,22 @@
     border-radius:5px;
 }
 
-.card{
-    text-align:left;
+.search{
+    text-align: left;
 }
 
-.search{
-    text-align: center;
+.searchBarTitle{
+    width: 50%;
+    height: 50%;
+    margin-bottom: 5px;
 }
+
+.eventNameInput{
+    width: 98%;
+}
+
+.results-list{
+    background-color: rgb(137, 207, 240);
+    border-radius: 30px;
+}
+

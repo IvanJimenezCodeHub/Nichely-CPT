@@ -2,7 +2,8 @@ import React from 'react';
 import Event from '../components/Event';
 import './css/explore.css';
 import Loading from '../components/Loading';
-
+import mapLogo from './images/mapLogo.png';
+import searchBarPic from './images/searchPic.png';
 
 class PostsListPage extends React.Component {
   state = {
@@ -38,10 +39,10 @@ class PostsListPage extends React.Component {
               <div className="search">
                 <div className="input">
                   <label htmlFor="event">
-                  <p className="event_prompt_info">Search for events</p>
+                  <img className="searchBarTitle" src = {searchBarPic}></img>
                   <input 
                     type="text" 
-                    className="event_name_input"
+                    className="eventNameInput"
                     placeholder="Event" 
                     value={this.state.eventName}
                     onChange={this.eventNameChanged}
@@ -55,7 +56,7 @@ class PostsListPage extends React.Component {
           </div>
         </div>
         <div className="col">
-            <h2>Map here, perhaps</h2>
+            <h2><img src = {mapLogo}></img></h2>
         </div>
       </div>
         </div>
