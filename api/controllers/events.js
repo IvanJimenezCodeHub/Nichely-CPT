@@ -18,7 +18,9 @@ const { Event } = db;
 
 
 router.get('/', (req,res) => {
-  Event.findAll({})
+  Event.findAll({
+    order: [['createdAt', 'DESC']]
+  })
     .then(events => res.json(events));
 });
 
