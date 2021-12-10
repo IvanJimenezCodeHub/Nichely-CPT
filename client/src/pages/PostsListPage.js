@@ -1,7 +1,6 @@
 import React from 'react';
 import Event from '../components/Event';
 import './css/explore.css';
-import Loading from '../components/Loading';
 import mapLogo from './images/mapLogo.png';
 import searchBarPic from './images/searchPic.png';
 
@@ -39,7 +38,7 @@ class PostsListPage extends React.Component {
               <div className="search">
                 <div className="input">
                   <label htmlFor="event">
-                  <img className="searchBarTitle" src = {searchBarPic}></img>
+                  <img className="searchBarTitle" alt="Search for an event" src = {searchBarPic}></img>
                   <input 
                     type="text" 
                     className="eventNameInput"

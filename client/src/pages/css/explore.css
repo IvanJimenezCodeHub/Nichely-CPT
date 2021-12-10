@@ -1,4 +1,5 @@
 .results-list{
+    font-family: 'Roboto Slab', serif;
     padding:40px;
     border:solid 2px;
     box-shadow:3px 5px rgba(51, 51, 51, 0.18);
@@ -10,17 +11,18 @@
 }
 
 .searchBarTitle{
-    width: 50%;
-    height: 50%;
+    width: 60%;
+    height: 60%;
     margin-bottom: 5px;
 }
 
 .eventNameInput{
     width: 98%;
+    margin-top:14px;
 }
 
 .results-list{
-    background-color: rgb(137, 207, 240);
+    
     border-radius: 30px;
 }
 

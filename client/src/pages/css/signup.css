@@ -1,5 +1,5 @@
 .signUpContainer{
-    border: 2px solid black;
+border: 2px solid black;
 border-radius: 30px;
 width: 450px;
 height: 475px;
@@ -49,6 +49,7 @@ box-shadow: 4px 5px rgba(51, 51, 51, 0.18);
 
 .logInLink{
 margin-top: 30px;
+font-family: 'Nunito', sans-serif;
 width: 450px;
 height: 50px;
 border: none;
