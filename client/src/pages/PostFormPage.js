@@ -1,6 +1,8 @@
 import React from 'react';
 import { Redirect, BrowserRouter as Router, Route } from 'react-router-dom';
+import createEventPic from './images/createEvent.png';
 import './css/create.css';
+
 import PostsListPage from './PostsListPage';
 
 class PostFormPage extends React.Component {
@@ -101,7 +103,7 @@ class PostFormPage extends React.Component {
       <div className="container">
       <div className="row justify-content-center">
         <div className="col-3">
-          <h2 id="top_text_create">Create Event</h2>
+        <img src = {createEventPic} alt="Create an event"></img>
             { errorMessage }
           <div className="input-group">
             <label htmlFor="name">
