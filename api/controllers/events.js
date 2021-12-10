@@ -22,9 +22,7 @@ router.get('/', (req,res) => {
     .then(events => res.json(events));
 });
 
-
 router.post('/', passport.isAuthenticated(), (req, res) => {
-
   let { eventName, eventDescription, eventLocation, eventTime, eventDate, relevantInterests } = req.body;
 
   Event.create({ eventName, eventDescription, eventLocation, eventTime, eventDate, relevantInterests })
@@ -37,7 +35,6 @@ router.post('/', passport.isAuthenticated(), (req, res) => {
     });
 
 });
-
 
 router.get('/:id', (req, res) => {
   const { id } = req.params;
@@ -58,7 +55,7 @@ router.put('/:id', passport.isAuthenticated(), (req, res) => {
   Event.findByPk(id)
     .then(post => {
       if(!post) {
-        console.log("Error updatting (put). Event was not found!\n");
+        console.log("Error updating (put). Event was not found!\n");
         return res.sendStatus(404);
       }
 
