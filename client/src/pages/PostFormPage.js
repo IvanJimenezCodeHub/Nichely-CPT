@@ -150,6 +150,19 @@ class PostFormPage extends React.Component {
                 />
               </label>
               </div>
+
+              <div>
+              <label htmlFor="description">
+                <p className="event_prompt_info">Description of Event</p>
+                <input 
+                  type="description" 
+                  className="event_decription_input"
+                  value={this.state.eventDescription}
+                  onChange={this.eventDescriptionChanged}
+                />
+              </label>
+              </div>
+
               <div>
               <label htmlFor="date">
                 <input 

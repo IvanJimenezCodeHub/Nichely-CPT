@@ -24,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     eventLocation: {
       type: DataTypes.STRING,
       validate: {
-        len: [1, 20],
         notEmpty: true,
       }
     },
