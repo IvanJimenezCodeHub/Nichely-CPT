@@ -1,0 +1,46 @@
+/* .input-group{
+margin-top:40px;
+
+} */
+
+.map{
+    height: 425px;
+    width: 650px;
+    
+}
+#top_text_create{
+font-family: 'Bebas Neue', 'Roboto';
+}
+
+.event_prompt_info{
+margin-bottom:4px;
+text-align:start;
+}
+
+.event_name_input, .event_description_input, .event_location_input, .event_interests_input{
+margin-bottom:10px;
+width:20%;
+border-radius: 4px;
+outline:none;
+}
+
+textarea{
+    height:120px;
+    border: solid 2px;
+    border-radius: 4px;
+}
+
+.event_time_input{
+margin-bottom:10px;
+border-radius: 4px;
+margin-right: 60px;
+}
+
+.event_date_input{
+margin-bottom:10px;
+border-radius: 4px;  
+}
+
+button{
+margin-top:40px;
+}
