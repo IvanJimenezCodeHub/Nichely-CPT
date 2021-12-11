@@ -1,4 +1,14 @@
 
+
+.map{
+    height: 425px;
+    width: 650px;
+    
+}
+#top_text_create{
+font-family: 'Bebas Neue', 'Roboto';
+}
+
 .container{
 margin-top:15px;
 }
@@ -29,13 +39,12 @@ textarea{
 
 .event_time_input{
 margin-bottom:10px;
-margin-right:250px;
 border-radius: 4px;
+margin-right: 60px;
 }
 
 .event_date_input{
 margin-bottom:10px;
-margin-right:190px;
 border-radius: 4px;  
 }
 

@@ -1,6 +1,10 @@
 import React from 'react';
 import Event from '../components/Event';
 import './css/explore.css';
+import './css/map.css';
+import Loading from '../components/Loading';
+import Maps from '../components/Maps';
+
 import mapLogo from './images/mapLogo.png';
 import searchBarPic from './images/searchPic.png';
 
@@ -54,9 +58,10 @@ class PostsListPage extends React.Component {
             </div>
           </div>
         </div>
-        <div className="col">
-            <h2><img src = {mapLogo}></img></h2>
-        </div>
+            <div className="map">
+              {Maps()}
+            </div>
+
       </div>
         </div>
     );

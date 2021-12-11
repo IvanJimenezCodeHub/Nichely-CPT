@@ -3,22 +3,31 @@ import React from 'react';
 import { Redirect, BrowserRouter as Router, Route } from 'react-router-dom';
 import createEventPic from './images/createEvent.png';
 import './css/create.css';
+import './css/map.css';
 
 import PostsListPage from './PostsListPage';
+import Maps from '../components/Maps';
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng
+} from "react-places-autocomplete";
+
 
 class PostFormPage extends React.Component {
-  
-  state = {
-    error: false,
-    success: false,
-    eventName: '',
-    eventDescription: '',
-    eventLocation: '',
-    eventTime: '',
-    eventDate:'',
-    relevantInterests: '',
-    hostId: this.context.user.id ,
-  }
+
+  constructor(props) {
+    super(props);
+    this.state = { 
+        error: false,
+        success: false,
+        eventName: '',
+        eventDescription: '',
+        eventLocation: '',
+        eventTime: '',
+        eventDate:'',
+        relevantInterests: '',
+      };
+    }
 
   eventNameChanged = (event) => {
     this.setState({
@@ -53,6 +62,19 @@ class PostFormPage extends React.Component {
       relevantInterests: event.target.value
     });
   }
+
+
+
+  eventLocationChanged = eventLocation => {
+    this.setState({ eventLocation });
+  };
+
+  handleSelect = eventLocation => {
+    geocodeByAddress(eventLocation)
+      .then(results => getLatLng(results[0]))
+      .then(latLng => console.log('Success', latLng))
+      .catch(error => console.error('Error', error));
+  };
 
   savePost = (event) => {
 
@@ -90,6 +112,10 @@ class PostFormPage extends React.Component {
       });
   }
 
+
+
+  
+
   render() {
     if(this.state.success) return <Redirect to="/explore" />;
 
@@ -103,68 +129,115 @@ class PostFormPage extends React.Component {
     }
 
     return (
-      <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-3">
-        <img src = {createEventPic} alt="Create an event"></img>
+      <div >
+        <div >
+          <h2 id="top_text_create">Create Event</h2>
             { errorMessage }
-          <div className="input-group">
-            <label htmlFor="name">
-              <p className="event_prompt_info">Name your event</p>
-              <input 
-                type="text" 
-                className="event_name_input"
-                placeholder="Name" 
-                value={this.state.eventName}
-                onChange={this.eventNameChanged}
-              />
-            </label>
-            <label htmlFor="description">
-              <p className="event_prompt_info">Describe your event</p>
-              <textarea 
-                type="text" 
-                className="event_description_input"
-                placeholder="Description" 
-                value={this.state.eventDescription}
-                onChange={this.eventDescriptionChanged}
-              />
-            </label>
-            <label htmlFor="location">
-              <p className="event_prompt_info">Set location</p>
-              <input 
-                type="text" 
-                className="event_location_input"
-                placeholder="Location" 
-                value={this.state.eventLocation}
-                onChange={this.eventLocationChanged}
-              />
-            </label>
-            <label htmlFor="time">
-              <p className="event_prompt_info">Set date and time</p>
-              <input 
-                type="time" 
-                className="event_time_input"
-                value={this.state.eventTime}
-                onChange={this.eventTimeChanged}
-              />
+          <div >
+            <div>
+              <label htmlFor="name">
+                <p className="event_prompt_info">Name your event</p>
+                <input 
+                  type="text" 
+                  className="event_name_input"
+                  placeholder="Name" 
+                  value={this.state.eventName}
+                  onChange={this.eventNameChanged}
+                />
+              </label>
+            </div>
+            
+            <div>
+              <label htmlFor="time">
+                <p className="event_prompt_info">Set date and time</p>
+                <input 
+                  type="time" 
+                  className="event_time_input"
+                  value={this.state.eventTime}
+                  onChange={this.eventTimeChanged}
+                />
+              </label>
+              </div>
 
-              <input 
-                type="date" 
-                className="event_date_input"
-                value={this.state.eventDate}
-                onChange={this.eventDateChanged}
-              />
-            </label>
-            <label htmlFor="interests">
-              <p className="event_prompt_info">List relevant interests</p>
-              <textarea 
-                type="text" 
-                className="event_interests_input"
-                placeholder="interests" 
-                value={this.state.relevantInterests}
-                onChange={this.relevantInterestsChanged}
-              />
-            </label>
+              <div>
+              <label htmlFor="description">
+                <p className="event_prompt_info">Description of Event</p>
+                <input 
+                  type="description" 
+                  className="event_decription_input"
+                  value={this.state.eventDescription}
+                  onChange={this.eventDescriptionChanged}
+                />
+              </label>
+              </div>
+
+              <div>
+              <label htmlFor="date">
+                <input 
+                  type="date" 
+                  className="event_date_input"
+                  value={this.state.eventDate}
+                  onChange={this.eventDateChanged}
+                />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="interests">
+                <p className="event_prompt_info">List relevant interests</p>
+                <textarea 
+                  type="text" 
+                  className="event_interests_input"
+                  placeholder="interests" 
+                  value={this.state.relevantInterests}
+                  onChange={this.relevantInterestsChanged}
+                />
+              </label>
+            </div>
+            
+            <PlacesAutocomplete
+              value={this.state.eventLocation}
+              onChange={this.eventLocationChanged}
+              onSelect={this.handleSelect}
+            >
+              {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                <div>
+                
+                  <input {...getInputProps({
+                    placeholder: 'Search Places ...',
+                    className: 'event_location_input',
+                  })} />
+
+                  <div className="autocomplete-dropdown-container">
+                    {loading && <div>Loading...</div>}
+                    {suggestions.map(suggestion => {
+                      const className = suggestion.active
+                        ? 'suggestion-item--active'
+                        : 'suggestion-item';
+                      // inline style for demonstration purpose
+                      const style = suggestion.active
+                        ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                        : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                      return (
+                        <div
+                          {...getSuggestionItemProps(suggestion, {
+                            className,
+                            style,
+                          })}
+                        >
+                          <span>{suggestion.description}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </PlacesAutocomplete>
+            
+            <div className="map">
+              {Maps()}
+            </div>
+            
+
 
             </div>
 
@@ -174,11 +247,14 @@ class PostFormPage extends React.Component {
 
             <button className="btn btn-outline-secondary" onClick={this.savePost}>Create event</button>
           </div>
+          
       </div>
     </div>
     );
   }
+
 }
+
 
 PostFormPage.contextType=AuthContext;
 export default PostFormPage;
