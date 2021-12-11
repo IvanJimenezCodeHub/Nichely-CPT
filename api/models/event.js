@@ -60,13 +60,10 @@ module.exports = (sequelize, DataTypes) => {
         //notEmpty: true
       }
     },
-    numRSVP: {
-      type: DataTypes.INTEGER,
-      validate: {
-        min: 1,
-        notEmpty: true,
-      }
-    },
+    rsvpList: {
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
+      validate: {}
+    }
 
   }, {
     sequelize,

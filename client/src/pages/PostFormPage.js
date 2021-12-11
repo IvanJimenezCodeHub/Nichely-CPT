@@ -1,9 +1,11 @@
+import { AuthContext } from '../context/AuthContext';
 import React from 'react';
 import { Redirect, BrowserRouter as Router, Route } from 'react-router-dom';
 import './css/create.css';
 import PostsListPage from './PostsListPage';
 
 class PostFormPage extends React.Component {
+  
   state = {
     error: false,
     success: false,
@@ -13,7 +15,7 @@ class PostFormPage extends React.Component {
     eventTime: '',
     eventDate:'',
     relevantInterests: '',
-    hostId: '', // TODO: this wont be input, it must be got from authentication when logged in somehow.
+    hostId: this.context.user.id ,
   }
 
   eventNameChanged = (event) => {
@@ -51,6 +53,7 @@ class PostFormPage extends React.Component {
   }
 
   savePost = (event) => {
+
     console.log(this.state.eventName)
     fetch("/api/events/", {
       method: 'POST',
@@ -61,7 +64,7 @@ class PostFormPage extends React.Component {
       body: JSON.stringify({
           eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation, 
           eventTime: this.state.eventTime, eventDate: this.state.eventDate, relevantInterests: this.state.relevantInterests, 
-          hostId: this.state.hostId, numRSVP: 1
+          hostId: this.state.hostId , rsvpList: [this.state.hostId]
         }),
     })
       .then(res => {
@@ -175,4 +178,5 @@ class PostFormPage extends React.Component {
   }
 }
 
+PostFormPage.contextType=AuthContext;
 export default PostFormPage;

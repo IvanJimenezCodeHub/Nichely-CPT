@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -71,7 +72,7 @@ class App extends React.Component {
                 <Route path="/log-in" component={LoginPage} />
                 <PublicRoute restricted={true} path="/signup" component={SignUpPage} />
                 <PrivateRoute path="/events/new" component={PostFormPage} />
-                <Route path="/events/:id" component={ShowPostPage} />
+                <PrivateRoute path="/events/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/explore" component={PostsListPage} />
               </Switch>

@@ -1,6 +1,6 @@
 import React from 'react';
-import Event from '../components/Event';
 import EventFull from '../components/EventFull';
+import { AuthContext } from '../context/AuthContext';
 import Loading from '../components/Loading';
 import { Redirect } from 'react-router-dom';
 
@@ -38,4 +38,5 @@ class ShowPostPage extends React.Component {
   }
 }
 
+ShowPostPage.contextType=AuthContext;
 export default ShowPostPage;

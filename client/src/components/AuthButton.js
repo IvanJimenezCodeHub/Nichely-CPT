@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-
 import { AuthContext } from '../context/AuthContext';
 
 const AuthButton = withRouter(({ history }) => {
