@@ -1,7 +1,6 @@
 import { AuthContext } from '../context/AuthContext';
 import React from 'react';
 import { Redirect, BrowserRouter as Router, Route } from 'react-router-dom';
-import createEventPic from './images/createEvent.png';
 import './css/create.css';
 import './css/map.css';
 
@@ -249,7 +248,6 @@ class PostFormPage extends React.Component {
           </div>
           
       </div>
-    </div>
     );
   }
 
