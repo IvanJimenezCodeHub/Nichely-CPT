@@ -1,7 +1,4 @@
-/* .input-group{
-margin-top:40px;
 
-} */
 
 .map{
     height: 425px;
@@ -12,14 +9,24 @@ margin-top:40px;
 font-family: 'Bebas Neue', 'Roboto';
 }
 
+.container{
+margin-top:15px;
+}
+
+.input-group{
+margin-top:40px;
+}
+
 .event_prompt_info{
+font-family: 'Roboto Slab', serif;
 margin-bottom:4px;
 text-align:start;
+font-size:16px;
 }
 
 .event_name_input, .event_description_input, .event_location_input, .event_interests_input{
 margin-bottom:10px;
-width:120%;
+width:143%;
 border-radius: 4px;
 outline:none;
 }
@@ -42,5 +49,5 @@ border-radius: 4px;
 }
 
 button{
-margin-top:40px;
+margin: 40px 0px;
 }

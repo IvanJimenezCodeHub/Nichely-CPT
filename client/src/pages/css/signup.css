@@ -1,0 +1,91 @@
+.signUpContainer{
+border: 2px solid black;
+border-radius: 30px;
+width: 450px;
+height: 475px;
+box-shadow: 4px 6px rgb(238, 163, 198);
+background-color: pink;
+}
+
+#nichelyLogo {
+width: 50%;
+margin-top: 20px;
+}
+
+.firstNameTxtBox{
+margin-top: 15px;
+margin-bottom: 0; 
+outline:none;
+box-shadow:4px 5px rgba(51, 51, 51, 0.18);
+}
+
+.lastNameTxtBox{
+margin-top: 20px;
+margin-bottom: 0; 
+outline:none;
+box-shadow:4px 5px rgba(51, 51, 51, 0.18);
+}
+
+.emailTxtBox{
+margin-top: 20px;
+margin-bottom: 0; 
+outline:none;
+box-shadow:4px 5px rgba(51, 51, 51, 0.18);
+}
+
+.passwordTxtBox {
+margin-top: 20px;
+margin-bottom: 0;
+outline:none;
+box-shadow:4px 5px rgba(51, 51, 51, 0.18);
+}
+
+.signUpBtn{
+margin-top: 25px;
+width: 125px;
+border: none;
+box-shadow: 4px 5px rgba(51, 51, 51, 0.18);
+}
+
+.logInLink{
+margin-top: 30px;
+font-family: 'Nunito', sans-serif;
+width: 450px;
+height: 50px;
+border: none;
+border-radius:30px;
+box-shadow: 4px 5px rgba(51, 51, 51, 0.18);
+background-color: rgb(87, 178, 201)
+}
+
+#bookClub{
+    height: 45%;
+    position: absolute;
+    top: 80px;
+    right: 140px;
+    border-radius: 5%;
+}
+
+#gaming{
+    height: 45%;
+    position: absolute;
+    top: 255px;
+    right: 43px;
+    border-radius: 5%;
+}
+
+#party2{
+    height: 45%;
+    position: absolute;
+    top: 80px;
+    left: 140px;
+    border-radius: 5%;
+}
+
+#soccer{
+    height: 45%;
+    position: absolute;
+    top: 260px;
+    left: 40px;
+    border-radius: 5%;
+}

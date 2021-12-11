@@ -1,7 +1,10 @@
+import { AuthContext } from '../context/AuthContext';
 import React from 'react';
 import { Redirect, BrowserRouter as Router, Route } from 'react-router-dom';
+import createEventPic from './images/createEvent.png';
 import './css/create.css';
 import './css/map.css';
+
 import PostsListPage from './PostsListPage';
 import Maps from '../components/Maps';
 import PlacesAutocomplete, {
@@ -11,6 +14,7 @@ import PlacesAutocomplete, {
 
 
 class PostFormPage extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = { 
@@ -24,7 +28,6 @@ class PostFormPage extends React.Component {
         relevantInterests: '',
       };
     }
-
 
   eventNameChanged = (event) => {
     this.setState({
@@ -74,6 +77,7 @@ class PostFormPage extends React.Component {
   };
 
   savePost = (event) => {
+
     console.log(this.state.eventName)
     fetch("/api/events/", {
       method: 'POST',
@@ -81,7 +85,11 @@ class PostFormPage extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation, eventTime: this.state.eventTime, eventDate: this.state.eventDate, relevantInterests: this.state.relevantInterests}),
+      body: JSON.stringify({
+          eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation, 
+          eventTime: this.state.eventTime, eventDate: this.state.eventDate, relevantInterests: this.state.relevantInterests, 
+          hostId: this.state.hostId , rsvpList: [this.state.hostId]
+        }),
     })
       .then(res => {
         if(res.ok) {
@@ -230,11 +238,14 @@ class PostFormPage extends React.Component {
             </div>
             
 
+
+            </div>
+
             <Router>
               <Route path="/explore" component={PostsListPage} />
             </Router>
 
-            <button className="btn btn-primary" onClick={this.savePost}>Create event</button>
+            <button className="btn btn-outline-secondary" onClick={this.savePost}>Create event</button>
           </div>
           
       </div>
@@ -245,7 +256,5 @@ class PostFormPage extends React.Component {
 }
 
 
-
-
-
+PostFormPage.contextType=AuthContext;
 export default PostFormPage;
