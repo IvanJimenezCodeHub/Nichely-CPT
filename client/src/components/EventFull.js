@@ -1,8 +1,36 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useContext } from 'react';
 import './css/eventfull.css';
 import { Link } from 'react-router-dom';
+import req from 'express/lib/request';
+import { authenticate } from 'passport';
+import AuthButton from '../components/AuthButton';
+import  {AuthContext} from '../context/AuthContext';
 
-function EventFull({ eventName, eventLocation, eventDescription, eventTime, eventDate, relevantInterests, createdAt, id }) {
+
+function addToRSVP(eventId, userId)  {
+
+    fetch("/api/events/" + eventId + "/" + userId, {
+        method: 'PUT',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            userId: userId , eventId: eventId
+          }),
+      })
+      .then(res => res.json())
+      .catch(err => {
+        console.log("ERROR");
+      });
+
+}
+
+function EventFull({ eventName, eventLocation, eventDescription, eventTime, eventDate, relevantInterests, id}) {
+
+    let auth = useContext(AuthContext);
+    
     return (
         <div className="container">
             <div className="row">
@@ -10,13 +38,12 @@ function EventFull({ eventName, eventLocation, eventDescription, eventTime, even
                     <h1>{eventName}</h1>
                     <p>{eventDescription} </p>
                     <p>Relevant interests: {relevantInterests} </p>
-                    <button className="rsvpbtn btn btn-outline-secondary">RSVP</button>
-                    <button className="bookmarkbtn btn btn-outline-info">Bookmark</button>
+                    <button className="rsvpbtn btn btn-outline-secondary" onClick={() => addToRSVP(id, auth.user.id)}>RSVP</button>
                     <div className="user-info">
                         <div className="row">
                             <div className="col">
                                 <h3>Organizer</h3>
-                                <p className="user-name"><Link to="/">Username</Link></p>
+                                <p className="user-name"><Link to="/user/">Username</Link></p>
                                 <p>user bio here!!!</p>
                             </div>
                         </div>
