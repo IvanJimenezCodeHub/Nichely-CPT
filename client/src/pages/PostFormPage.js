@@ -249,7 +249,6 @@ class PostFormPage extends React.Component {
           </div>
           
       </div>
-    </div>
     );
   }
 
