@@ -1,0 +1,32 @@
+.heading{
+    margin-bottom:45px;
+}
+
+h2{
+    font-family:'Bebas Neue', 'Roboto';
+}
+
+.row{
+    margin-bottom:50px;
+}
+
+.headshot{
+    width: 70%;
+    border-radius:10%;
+}
+
+.red{
+    color:#dc5c6c;
+}
+
+.green{
+    color:#23a394;
+}
+
+.left{
+    text-align:left;
+}
+
+.right{
+    text-align:right;
+}
