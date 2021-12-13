@@ -30,6 +30,20 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
 
+    latitude: {
+      type: DataTypes.FLOAT,
+      validate: {
+        // notEmpty: true,
+      }
+    },
+
+    longitude: {
+      type: DataTypes.FLOAT,
+      validate: {
+        // notEmpty: true,
+      }
+    },
+
     eventTime: {
       type: DataTypes.TIME,
       validate: {
