@@ -92,7 +92,9 @@ class PostFormPage extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       },
+
       body: JSON.stringify({eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation, latitude: this.state.latitude, longitude: this.state.longitude, eventTime: this.state.eventTime, eventDate: this.state.eventDate, relevantInterests: this.state.relevantInterests}),
+
     })
       .then(res => {
         if(res.ok) {
