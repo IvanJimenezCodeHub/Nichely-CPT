@@ -47,7 +47,7 @@ function AboutUsPage(props) {
             <div class="col-lg-5">
             <h4 className="left red">Matin Nazamy</h4>
                 <p className="left">
-                <a href="nazamy.com" target="_blank" className="left">nazamy.com</a><br></br>
+                <a href="http://nazamy.com" target="_blank" className="left">nazamy.com</a><br></br>
                 An aspiring software engineer that is 
                 studying Computer Science at Queens 
                 College. Outside of professional work, 

@@ -87,7 +87,7 @@ class PostFormPage extends React.Component {
       body: JSON.stringify({
           eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation, 
           eventTime: this.state.eventTime, eventDate: this.state.eventDate, relevantInterests: this.state.relevantInterests, 
-          hostId: this.state.hostId , rsvpList: [this.state.hostId]
+          hostId: this.context.user.id
         }),
     })
       .then(res => {
