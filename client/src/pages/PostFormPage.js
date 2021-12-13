@@ -1,19 +1,18 @@
-import { AuthContext } from '../context/AuthContext';
 import React from 'react';
 import { Redirect, BrowserRouter as Router, Route } from 'react-router-dom';
 import './css/create.css';
 import './css/map.css';
-
 import PostsListPage from './PostsListPage';
 import Maps from '../components/Maps';
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
+import { GoogleMap, withScriptjs, withGoogleMap, Marker } from "react-google-maps";
+
 
 
 class PostFormPage extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = { 
@@ -25,8 +24,12 @@ class PostFormPage extends React.Component {
         eventTime: '',
         eventDate:'',
         relevantInterests: '',
+        latitude: '',
+        longitude: ''
       };
     }
+
+
 
   eventNameChanged = (event) => {
     this.setState({
@@ -62,8 +65,6 @@ class PostFormPage extends React.Component {
     });
   }
 
-
-
   eventLocationChanged = eventLocation => {
     this.setState({ eventLocation });
   };
@@ -71,12 +72,19 @@ class PostFormPage extends React.Component {
   handleSelect = eventLocation => {
     geocodeByAddress(eventLocation)
       .then(results => getLatLng(results[0]))
+      .then(({ lat, lng })  =>
+      // console.log('Successfully got latitude and longitude', { lat, lng }))
+        this.setState({
+          latitude : lat,
+          longitude: lng,
+        }))
       .then(latLng => console.log('Success', latLng))
       .catch(error => console.error('Error', error));
+    
+      
   };
 
   savePost = (event) => {
-
     console.log(this.state.eventName)
     fetch("/api/events/", {
       method: 'POST',
@@ -84,11 +92,7 @@ class PostFormPage extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-          eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation, 
-          eventTime: this.state.eventTime, eventDate: this.state.eventDate, relevantInterests: this.state.relevantInterests, 
-          hostId: this.context.user.id
-        }),
+      body: JSON.stringify({eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation, latitude: this.state.latitude, longitude: this.state.longitude, eventTime: this.state.eventTime, eventDate: this.state.eventDate, relevantInterests: this.state.relevantInterests}),
     })
       .then(res => {
         if(res.ok) {
@@ -145,6 +149,19 @@ class PostFormPage extends React.Component {
                 />
               </label>
             </div>
+
+            <div>
+              <label htmlFor="description">
+                <p className="event_description_info">Enter description</p>
+                <textarea 
+                  type="text" 
+                  className="event_description_input"
+                  placeholder="description" 
+                  value={this.state.eventDescription}
+                  onChange={this.eventDescriptionChanged}
+                />
+              </label>
+            </div>
             
             <div>
               <label htmlFor="time">
@@ -157,19 +174,6 @@ class PostFormPage extends React.Component {
                 />
               </label>
               </div>
-
-              <div>
-              <label htmlFor="description">
-                <p className="event_prompt_info">Description of Event</p>
-                <input 
-                  type="description" 
-                  className="event_decription_input"
-                  value={this.state.eventDescription}
-                  onChange={this.eventDescriptionChanged}
-                />
-              </label>
-              </div>
-
               <div>
               <label htmlFor="date">
                 <input 
@@ -237,21 +241,21 @@ class PostFormPage extends React.Component {
             </div>
             
 
-
-            </div>
-
             <Router>
               <Route path="/explore" component={PostsListPage} />
             </Router>
 
-            <button className="btn btn-outline-secondary" onClick={this.savePost}>Create event</button>
+            <button className="btn btn-primary" onClick={this.savePost}>Create event</button>
           </div>
           
       </div>
+    </div>
     );
   }
 
 }
+
+
 
 
 PostFormPage.contextType=AuthContext;
