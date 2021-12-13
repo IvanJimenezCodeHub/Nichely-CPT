@@ -6,7 +6,12 @@ import req from 'express/lib/request';
 import { authenticate } from 'passport';
 import AuthButton from '../components/AuthButton';
 import  {AuthContext} from '../context/AuthContext';
+import Map from './Maps';
+import { GoogleMap, withScriptjs, withGoogleMap, Marker } from "react-google-maps";
 
+
+var lat = 0;
+var lng = 0;
 
 function addToRSVP(eventId, userId)  {
 
@@ -27,10 +32,26 @@ function addToRSVP(eventId, userId)  {
 
 }
 
-function EventFull({ eventName, eventLocation, eventDescription, eventTime, eventDate, relevantInterests, id}) {
+function GMap(){
+    return (
+        <GoogleMap 
+            defaultZoom={11} 
+            defaultCenter={{lat: lat, lng: lng}}
+        >         
+            <Marker position={{lat: lat, lng: lng }}></Marker>
+        </GoogleMap>
+    );
+}
+
+
+
+
+function EventFull({ eventName, eventLocation, eventDescription, eventTime, eventDate, relevantInterests, id, longitude,latitude}) {
+    lat = latitude;
+    lng = longitude;
 
     let auth = useContext(AuthContext);
-    
+    const WrappedMap = withScriptjs(withGoogleMap(GMap));
     return (
         <div className="container">
             <div className="row">
@@ -57,7 +78,14 @@ function EventFull({ eventName, eventLocation, eventDescription, eventTime, even
                         <p>Date: {eventDate}</p>
                         <p>Time: {eventTime}</p>
                         <p>Location: {eventLocation}</p>
-                        <h2>Map here, perhaps</h2>
+                        <div style={{ width: "600px", height: "300px" }}>
+                            <WrappedMap
+                                googleMapURL = {"https://maps.googleapis.com/maps/api/js?key=AIzaSyB8elomWP1QiWtBxQnatkC986I3ec2dl30&callback=initMap&libraries=&v=weekly"}
+                                loadingElement = {<div style={{ height: "100%" }} />}
+                                containerElement = {<div style={{ height: "100%" }} />}     
+                                mapElement = {<div style={{ height: "100%" }} />}                 
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
