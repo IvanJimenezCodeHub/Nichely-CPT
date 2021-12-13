@@ -26,9 +26,9 @@ router.get('/', (req,res) => {
 });
 
 router.post('/', passport.isAuthenticated(), (req, res) => {
-  let { eventName, eventDescription, eventLocation, eventTime, eventDate, relevantInterests, hostId } = req.body;
+  let { eventName, eventDescription, eventLocation, latitude, longitude, eventTime, eventDate, relevantInterests, hostId } = req.body;
   let rsvpList = [];
-  Event.create({ eventName, eventDescription, eventLocation, eventTime, eventDate, relevantInterests, hostId, rsvpList })
+  Event.create({ eventName, eventDescription, eventLocation, latitude, longitude, eventTime, eventDate, relevantInterests, hostId, rsvpList })
     .then(post => {
       console.log("created!");
       res.status(201).json(post);
