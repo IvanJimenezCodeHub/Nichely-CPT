@@ -1,4 +1,5 @@
 import React from 'react';
+import { AuthContext } from '../context/AuthContext';
 import { Redirect, BrowserRouter as Router, Route } from 'react-router-dom';
 import './css/create.css';
 import './css/map.css';
