@@ -3,6 +3,7 @@ import EventFull from '../components/EventFull';
 import { AuthContext } from '../context/AuthContext';
 import Loading from '../components/Loading';
 import { Redirect } from 'react-router-dom';
+import EventCard from '../components/EventCard';
 
 class ShowPostPage extends React.Component {
   state = {
@@ -13,6 +14,7 @@ class ShowPostPage extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
+    
     fetch("/api/events/"+id)
       .then(res => res.json())
       .then(ev => {

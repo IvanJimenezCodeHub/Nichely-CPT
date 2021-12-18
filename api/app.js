@@ -33,7 +33,7 @@ if(process.env.NODE_ENV==='production') {
   app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
   });
-}
+} 
 
 // update DB tables based on model updates. Does not handle renaming tables/columns
 // NOTE: toggling this to true drops all tables (including data)

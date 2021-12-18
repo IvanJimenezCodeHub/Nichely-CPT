@@ -97,6 +97,7 @@ render(){
                                     onChange = {this.fieldChanged('email')} 
                                 />
                             </label>
+                            <br/>
                             <label htmlFor = "password">
                                 <input
                                     className = "password-text-prompt"
