@@ -1,3 +1,4 @@
+
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import {
@@ -13,6 +14,7 @@ import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
 import LoginPage from './pages/LogInPage';
 import SignUpPage from './pages/SignUpPage';
+import UserPage from './pages/UserPage';
 import { AuthProvider } from './context/AuthContext';
 import AuthButton from './components/AuthButton';
 import PrivateRoute from './components/PrivateRoute';
@@ -59,7 +61,6 @@ function Navigation(props) {
   );
 }
 
-
 class App extends React.Component {
   render() {
     return (
@@ -75,6 +76,7 @@ class App extends React.Component {
                 <PrivateRoute path="/events/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/explore" component={PostsListPage} />
+                <Route path="/user/:id" component={UserPage} />
               </Switch>
             </div>
           </div>
@@ -83,6 +85,5 @@ class App extends React.Component {
     );
   }
 }
-
 
 export default App;

@@ -9,11 +9,29 @@ import  {AuthContext} from '../context/AuthContext';
 import Map from './Maps';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker } from "react-google-maps";
 
-
 var lat = 0;
 var lng = 0;
+var name = "blah";
+const rsvpNameArray = ['RSVP' , 'Un-RSVP'];
+var rsvpValue = 0;
+
+
+
+function getUserName(userID){
+    // get the users name
+    fetch("/api/userName/"+userID)
+    .then(res => res.json())
+    .then(user => {
+        name = user.firstName + " " + user.lastName;
+    })
+    .catch(err => console.log("API ERROR: ", err));
+}
 
 function addToRSVP(eventId, userId)  {
+
+    rsvpValue = (rsvpValue+1)%2;
+    console.log(rsvpValue);  
+
 
     fetch("/api/events/" + eventId + "/" + userId, {
         method: 'PUT',
@@ -25,10 +43,13 @@ function addToRSVP(eventId, userId)  {
             userId: userId , eventId: eventId
           }),
       })
-      .then(res => res.json())
+      .then(res => {
+        res.json()
+      })
       .catch(err => {
         console.log("ERROR");
       });
+
 
 }
 
@@ -44,13 +65,14 @@ function GMap(){
 }
 
 
+function EventFull({ eventName, eventLocation, eventDescription, eventTime, eventDate, relevantInterests, id, longitude,latitude, hostId}) {
 
+    getUserName(hostId);
 
-function EventFull({ eventName, eventLocation, eventDescription, eventTime, eventDate, relevantInterests, id, longitude,latitude}) {
     lat = latitude;
     lng = longitude;
-
     let auth = useContext(AuthContext);
+
     const WrappedMap = withScriptjs(withGoogleMap(GMap));
     return (
         <div className="container">
@@ -59,13 +81,12 @@ function EventFull({ eventName, eventLocation, eventDescription, eventTime, even
                     <h1>{eventName}</h1>
                     <p>{eventDescription} </p>
                     <p>Relevant interests: {relevantInterests} </p>
-                    <button className="rsvpbtn btn btn-outline-secondary" onClick={() => addToRSVP(id, auth.user.id)}>RSVP</button>
+                    <button className="rsvpbtn btn btn-outline-secondary" onClick={() => addToRSVP(id, auth.user.id)}> {rsvpNameArray[rsvpValue]}</button>
                     <div className="user-info">
                         <div className="row">
                             <div className="col">
                                 <h3>Organizer</h3>
-                                <p className="user-name"><Link to="/user/">Username</Link></p>
-                                <p>user bio here!!!</p>
+                                <p className="user-name"><Link to={"/user/" + hostId}>{name}</Link></p>
                             </div>
                         </div>
                     </div>

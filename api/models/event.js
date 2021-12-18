@@ -22,7 +22,6 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       }
     },
-
     eventLocation: {
       type: DataTypes.STRING,
       validate: {
@@ -50,7 +49,6 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       }
     },
-
     eventDate: {
       type: DataTypes.DATEONLY,
       validate: {

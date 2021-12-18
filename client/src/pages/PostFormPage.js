@@ -25,8 +25,8 @@ class PostFormPage extends React.Component {
         eventTime: '',
         eventDate:'',
         relevantInterests: '',
-        latitude: '',
-        longitude: ''
+        latitude: null,
+        longitude: null
       };
     }
 
@@ -93,7 +93,7 @@ class PostFormPage extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation, latitude: this.state.latitude, longitude: this.state.longitude, eventTime: this.state.eventTime, eventDate: this.state.eventDate, relevantInterests: this.state.relevantInterests}),
+      body: JSON.stringify({eventName: this.state.eventName, eventDescription: this.state.eventDescription, eventLocation: this.state.eventLocation, latitude: this.state.latitude, longitude: this.state.longitude, eventTime: this.state.eventTime, eventDate: this.state.eventDate, relevantInterests: this.state.relevantInterests, hostId: this.context.user.id}),
     })
       .then(res => {
         if(res.ok) {
